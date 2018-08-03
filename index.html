@@ -7,7 +7,7 @@
 		<meta name="description" content="BC Cancer four-month milestone work term presentation">
 		<meta name="author" content="Matt Wiens">
 
-		<title>BC Cancer Shah Lab Presentation</title>
+		<title>BC Cancer: Shah Lab Presentation</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/solarized.css">
@@ -40,17 +40,15 @@
 					<h2>Outline</h2>
 					<ul>
 						<li>Introductions</li>
-						<li>the next section</li>
+						<li>Technical bit: Tantalus split</li>
+						<li>Personal experience</li>
+						<li>Summary</li>
 						<li>Questions</li>
 					</ul>
 				</section>
 
 				<section>
 					<h2>Introductions</h2>
-				</section>
-
-				<section>
-					<h2>Who am I?</h2>
 				</section>
 
 				<section>
@@ -64,22 +62,11 @@
 				</section>
 
 				<section>
-					<h2>What is BC Cancer?</h2>
-				</section>
-
-				<section>
 					<h3>What is BC Cancer?</h3>
 					<p>A cancer research centre with lots of labs.</p>
 					<p>From the department of Molecular Oncology:<p>
-					<ul>
-						<li>Dr. Sam Aparicio's lab (breast cancer)</li>
-						<li>Dr. David Huntsman's lab (ovarian cancer)</li>
-						<li>Dr. Sohrab Shah's lab (my lab)</li>
+					<ul> <li>Dr. Sam Aparicio's lab (breast cancer)</li> <li>Dr. David Huntsman's lab (ovarian cancer)</li> <li>Dr. Sohrab Shah's lab (my lab)</li>
 					</ul>
-				</section>
-
-				<section>
-					<h2>What is the Shah Lab?</h2>
 				</section>
 
 				<section>
@@ -89,6 +76,101 @@
 						<li>Strong focus on machine learning</li>
 						<li>However, . . .</li>
 					</ul>
+				</section>
+
+				<section>
+					<h2>Tantalus split</h2>
+				</section>
+
+				<section>
+					<h3>Tantalus: origins</h3>
+					<p>Where is my data?</p>
+					<p>For a given piece of data, what's its metadata?</p>
+				</section>
+
+				<section>
+					<h3>Data management—the wrong way</h3>
+					<pre><code class="hljs" data-trim>
+mwiens@node0515:/shahlab/archive/single_cell_indexing/TENX$ ls
+171127_TOV2295_OV2295            EX0069
+180418_NB501711_0067_AHLG5YBGX5  EX0070
+180525_NS500668_0346_AHVTK2BGX5  EX0074
+180528_NS500668_0347_AHVW3FBGX5  EX0075
+20170919_SA609x6xb01898          EX0076
+20171002_SA609X4XB01734          EX0079
+20171002_SA609X6XB01899          EX0080
+20171026_SA501X2XB00096          EX0085
+20171127SC18                     EX0086
+20180103SC13                     get_exclude_path.py
+20180104SC13                     L136ssm2
+20180108SC                       rsync_exclude_symlink_cycles.sh
+20180109SC                       transfer.sh
+EX0038                           VOA11083SD
+EX0068
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Data management—the wrong way</h3>
+					<ul>
+						<li>Not standardized</li>
+						<li>Not scalable</li>
+						<li>Not sexy</li>
+						<li>Easy to lose/forget about data</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Tantalus</h3>
+					<ul>
+						<li>BC Cancer-internal web app built with Django</li>
+						<li>Tracks data file locations on internal servers and in cloud storages</li>
+						<li>Tracks data file metadata</li>
+						<li>Tracks raw sequence data and analysis data</li>
+						<li>Transfers data files between servers</li>
+						<li>Queries upstream data servers (e.g., Genome Sciences Centre) for metadata</li>
+						<li>Decompresses/compresses data files with various compression schemes</li>
+						<li>. . .</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Unix philosophy</h3>
+					<p><q>Write programs that do one thing and do it well.</q></p>
+					<p>Peter H. Salus, A Quarter-Century of Unix (1994)</p>
+				</section>
+
+				<section>
+					<h3>Tantalus: a sober look</h3>
+					<p>Didn't follow "the main rule" of Unix philosophy. As a result:</p>
+					<ul>
+						<li>Source code is confusing</li>
+						<li>Making changes to one things can cause everything to break </li>
+						<li>Incredibly finicky using its non-robust code on 15 year old servers</li>
+						<li>Only one life scientist uses it out of about forty who should use it</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Tantalus: the way forward</h3>
+					<p>Split Tantalus into separate programs which can each satisfy the Unix philosophy. Our proposed split was</p>
+					<ul>
+						<li>A metadata manager for sequence and analysis data related to projects/experiments</li>
+						<li>A file location manager and tracker </li>
+						<li>A job runner that can run generic tasks on our internal servers or on cloud VMs</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Personal experience</h3>
+					<ul>
+						<li>Being active, outspoken, and persistent (yet tactful) can result in meaningful work</li>
+						<li>Being passive and not speaking up can result in boring janitorial work</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Summary</h2>
 				</section>
 
 				<section>
