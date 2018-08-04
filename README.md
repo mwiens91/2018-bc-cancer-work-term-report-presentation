@@ -14,7 +14,7 @@ Install all the required node packages with
 npm install
 ```
 
-then run the presentation locally with
+Then run the presentation locally with
 
 ```
 npm start
