@@ -2,7 +2,7 @@
 
 This is a [reveal.js](https://revealjs.com/#/) presentation that I have
 to write (and present) to satisfy my co-op requirements for the
-Engineering Science deparment at SFU.
+Engineering Science department at SFU.
 
 ## Presenting
 
