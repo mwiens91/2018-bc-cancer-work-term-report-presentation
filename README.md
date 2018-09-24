@@ -20,5 +20,5 @@ Then run the presentation locally with
 npm start
 ```
 
-Node should have opened up the presentation in your favourite browser
+Node.js should have opened up the presentation in your favourite browser
 (if it didn't, point your browser to `localhost:8000`).
